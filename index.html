@@ -1,38 +1,59 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mở Pi Browser</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-        }
-        a.button {
-            display: inline-block;
-            padding: 15px 25px;
-            font-size: 18px;
-            color: white;
-            background-color: #ff9800;
-            border-radius: 8px;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Đang mở Pi Browser…</title>
+  <meta name="description" content="Tự động mở Pi Browser tới pinet2day.com" />
+
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+         margin:0;display:flex;min-height:100vh;align-items:center;justify-content:center;background:#fafafa;color:#111}
+    .card{background:#fff;max-width:560px;width:92%;padding:28px;border-radius:16px;
+          box-shadow:0 6px 24px rgba(0,0,0,.08)}
+    h1{font-size:20px;margin:0 0 8px}
+    p{margin:6px 0 0;line-height:1.6;color:#444}
+    .btns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+    .btn{appearance:none;border:0;border-radius:12px;padding:12px 16px;font-weight:600;
+         cursor:pointer}
+    .primary{background:#783a8c;color:#fff}
+    .ghost{background:#f3f4f6;color:#111}
+    .hint{font-size:13px;color:#666;margin-top:10px}
+  </style>
+
+  <script>
+    // Deep link tới Pi Browser ngay khi tải trang
+    function openPi() {
+      // Cách 1: mở thẳng domain qua scheme pi://
+      window.location.href = "pi://pinet2day.com";
+
+      // Dự phòng: nếu sau 2s chưa chuyển (không có Pi Browser)
+      // thì hiện các lựa chọn thủ công (không tự chuyển qua https).
+      setTimeout(function () {
+        document.getElementById("fallback").style.display = "block";
+      }, 2000);
+    }
+
+    // Cho phép người dùng mở lại thủ công
+    function openPiManual() {
+      window.location.href = "pi://pinet2day.com";
+    }
+
+    window.addEventListener("load", openPi);
+  </script>
 </head>
 <body>
+  <div class="card">
+    <h1>Đang mở Pi Browser…</h1>
+    <p>Vui lòng chờ giây lát. Nếu Pi Browser không tự mở, hãy dùng các nút bên dưới.</p>
 
-<h1>Đang mở Pi Browser...</h1>
-<p>Nếu không thấy Pi Browser tự mở, bấm nút bên dưới:</p>
-<a class="button" href="pi://pinet2day.com">Mở Pi Browser</a>
-
-<script>
-    // Thử mở Pi Browser ngay khi tải trang
-    window.onload = function() {
-        window.location.href = "pi://pinet2day.com";
-    };
-</script>
-
+    <div id="fallback" style="display:none">
+      <div class="btns">
+        <button class="btn primary" onclick="openPiManual()">Mở trong Pi Browser</button>
+        <a class="btn ghost" href="https://pinet2day.com/" rel="noreferrer">Mở trong trình duyệt thường</a>
+      </div>
+      <p class="hint">Nếu vẫn không mở được, hãy đảm bảo bạn đã cài ứng dụng Pi Browser.</p>
+    </div>
+  </div>
 </body>
 </html>
