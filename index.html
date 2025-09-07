@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Đang mở Pi Browser…</title>
-  <meta name="description" content="Tự động mở Pi Browser tới 314pinetwork.com" />
+  <meta name="description" content="Tự động mở Pi Browser tới giftpinetwork.com" />
 
   <style>
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
@@ -25,7 +25,7 @@
     // Deep link tới Pi Browser ngay khi tải trang
     function openPi() {
       // Cách 1: mở thẳng domain qua scheme pi://
-      window.location.href = "pi://314pinetwork.com";
+      window.location.href = "pi://giftpinetwork.com";
 
       // Dự phòng: nếu sau 2s chưa chuyển (không có Pi Browser)
       // thì hiện các lựa chọn thủ công (không tự chuyển qua https).
@@ -36,7 +36,7 @@
 
     // Cho phép người dùng mở lại thủ công
     function openPiManual() {
-      window.location.href = "pi://314pinetwork.com";
+      window.location.href = "pi://giftpinetwork.com";
     }
 
     window.addEventListener("load", openPi);
@@ -50,7 +50,7 @@
     <div id="fallback" style="display:none">
       <div class="btns">
         <button class="btn primary" onclick="openPiManual()">Mở trong Pi Browser</button>
-        <a class="btn ghost" href="https://314pinetwork.com/" rel="noreferrer">Mở trong trình duyệt thường</a>
+        <a class="btn ghost" href="https://giftpinetwork.com/" rel="noreferrer">Mở trong trình duyệt thường</a>
       </div>
       <p class="hint">Nếu vẫn không mở được, hãy đảm bảo bạn đã cài ứng dụng Pi Browser.</p>
     </div>
